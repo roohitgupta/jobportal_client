@@ -1,6 +1,8 @@
 import React from "react";
 import { Box, Grid, Typography, Button } from "@mui/material";
 
+// Header section with Post a job Button
+
 const Header = () => {
   return (
     <Box p={10} bgcolor="black" color="white">
