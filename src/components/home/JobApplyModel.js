@@ -24,8 +24,8 @@ const JobApplyModel = () => {
   const classes = useStyles();
   return ( 
     <div>
-      <Dialog open={true} fullWidth>
-        <DialogTitle>Post Job</DialogTitle>
+      <Dialog open={false} fullWidth>
+        <DialogTitle>Apply Job</DialogTitle>
         <DialogContent>
           <Grid container>
             <Grid item xs={12}>
