@@ -7,7 +7,10 @@ const skills = ["JavaScript", "Node.js", "React.js"]
 
 const useStyles = makeStyles({
     wrapper: {
-        border: "1px solid blue"
+        border: "1px solid blue",
+        "&:hover": {
+            borderLeft: "6px solid blue"
+        }
     },
     companyName: {
         backgroundColor: "green",

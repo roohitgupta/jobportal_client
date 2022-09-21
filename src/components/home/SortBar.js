@@ -5,10 +5,13 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
     wrapper: {
-        // border: "1px solid black",
+        border: "3px solid black",
         backgroundColor: "white",
         position: "relative",
         top: "-30px",
+        borderRadius: "10px",
+        padding: "3px 8px"
+
     }
 })
 
