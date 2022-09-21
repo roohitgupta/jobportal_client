@@ -10,7 +10,7 @@ const Header = () => {
         <Grid item xs={10}>
           <Box display="flex" justifyContent="space-between">
             <Typography variant="h4">Open Job Listing</Typography>
-            <Button variant="contained" color="success">
+            <Button variant="contained" color="success" size="large">
               Post a Job
             </Button>
           </Box>

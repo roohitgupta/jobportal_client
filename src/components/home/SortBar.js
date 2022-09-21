@@ -24,7 +24,7 @@ const SortBar = () => {
               <MenuItem value="Newer">Newer</MenuItem>
               <MenuItem value="Older">Older</MenuItem>
             </Select>
-            <Button variant="contained" color="primary">
+            <Button variant="contained" color="primary" size="medium">
               Sort
             </Button>
           </Box>
@@ -33,7 +33,7 @@ const SortBar = () => {
               <MenuItem value="Full Time">Full Time</MenuItem>
               <MenuItem value="Part Time">Part Time</MenuItem>
             </Select>
-            <Button variant="contained" color="primary">
+            <Button variant="contained" color="primary" size="medium">
               Filter
             </Button>
           </Box>
