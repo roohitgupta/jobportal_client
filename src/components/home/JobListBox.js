@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { makeStyles } from "@material-ui/styles";
-import JobApplyModel from './JobApplyModel';
-
+import JobApplyModel from "./JobApplyModel";
+import Header from "./Header";
+import SortBar from "./SortBar";
 
 const useStyles = makeStyles({
   wrapper: {
-    boxShadow: "rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px",
+    boxShadow:
+      "rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px",
     borderBottom: "2px solid black",
     borderRadius: "8px",
     padding: "12px",
@@ -23,7 +25,6 @@ const useStyles = makeStyles({
     fontWeight: "bolder",
     padding: "5px",
   },
-  
 });
 
 const JobListBox = () => {
@@ -31,9 +32,9 @@ const JobListBox = () => {
   const [jobPost, setJobPost] = useState([]);
   const [openApplyModel, setOpenApplyModel] = useState(false);
 
-  const closeApplyBox = ()=> {
+  const closeApplyBox = () => {
     setOpenApplyModel(false);
-  }
+  };
 
   async function jobPostData() {
     try {
@@ -52,32 +53,56 @@ const JobListBox = () => {
 
   return (
     <div>
-      <Box p={2}  >
-        {jobPost.map((e) => (
-          <Grid key={e._id} className={classes.wrapper} container alignItems="center">
-            <Grid item xs>
-              <Typography variant="subtitle1">{e.jobtitle}</Typography>
-              <Typography className={classes.companyName} variant="subtitle1">
-                {e.company}
-              </Typography>
-            </Grid>
-            <Grid item xs>
-              {e.description}
-            </Grid>
-            <Grid item container direction="column" alignItems="flex-end" xs>
-              <Grid item>
-                <Typography variant="subtitle1">{e.location}</Typography>
+      <Header fetch2func={jobPostData} />
+      <Grid container justifyContent="center">
+        <Grid item xs={9}>
+          <SortBar />
+          <Box p={2}>
+            {jobPost.map((e) => (
+              <Grid
+                key={e._id}
+                className={classes.wrapper}
+                container
+                alignItems="center"
+              >
+                <Grid item xs>
+                  <Typography variant="subtitle1">{e.jobtitle}</Typography>
+                  <Typography
+                    className={classes.companyName}
+                    variant="subtitle1"
+                  >
+                    {e.company}
+                  </Typography>
+                </Grid>
+                <Grid item xs>
+                  {e.description}
+                </Grid>
+                <Grid
+                  item
+                  container
+                  direction="column"
+                  alignItems="flex-end"
+                  xs
+                >
+                  <Grid item>
+                    <Typography variant="subtitle1">{e.location}</Typography>
+                  </Grid>
+                  <Grid item>
+                    <Button
+                      onClick={() => setOpenApplyModel(true)}
+                      variant="contained"
+                      size="medium"
+                    >
+                      Apply
+                    </Button>
+                  </Grid>
+                </Grid>
               </Grid>
-              <Grid item>
-                <Button onClick={()=>setOpenApplyModel(true)} variant="contained" size="medium">
-                  Apply
-                </Button>
-              </Grid>
-            </Grid>
-          </Grid>
-        ))}
-        <JobApplyModel open={openApplyModel} fun2close={closeApplyBox} />
-      </Box>
+            ))}
+            <JobApplyModel open={openApplyModel} fun2close={closeApplyBox} />
+          </Box>
+        </Grid>
+      </Grid>
     </div>
   );
 };

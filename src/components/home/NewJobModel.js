@@ -41,10 +41,11 @@ const NewJobModel = (props) => {
         description
       })
     });
-    const data = await response.json();
-    console.log(data);
+    
   };
 
+
+  
 
 
   const classes = useStyles();
@@ -89,7 +90,11 @@ const NewJobModel = (props) => {
           </Grid>
         </DialogContent>
         <DialogActions>
-          <Button onClick={jobPost} variant="contained" disableElevation color="primary">
+          <Button onClick={()=> {
+              jobPost();
+              props.funClose();
+              props.fetch2func();
+          }} variant="contained" disableElevation color="primary">
             Post Job
           </Button>
           <Button onClick={()=>props.funClose()} variant="contained">Cancle</Button>

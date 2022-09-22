@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/styles';
 
 
 const useStyles = makeStyles({
-    wrapper: {
+    wrapper: { 
         border: "3px solid black",
         backgroundColor: "white",
         position: "relative",

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -23,6 +23,33 @@ const useStyles = makeStyles({
 
 const JobApplyModel = (props) => {
   const classes = useStyles();
+
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [expectedCTC, setExpectedCTC] = useState("");
+  const [experience, setExperience] = useState("");
+
+
+  async function ApplyJob(){
+    const response = await fetch("http://localhost:5000/api/applyjob", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        expectedCTC,
+        experience,
+      })
+    });
+    const data = await response.json();
+    
+  };
+
+
+
   return ( 
     <div>
       <Dialog open={props.open} fullWidth>
@@ -36,6 +63,7 @@ const JobApplyModel = (props) => {
                 disableUnderline
                 fullWidth
                 type="text"
+                onChange={(e)=> setName(e.target.value)}
               ></FilledInput>
               <FilledInput
                 className={classes.wrapper}
@@ -43,12 +71,14 @@ const JobApplyModel = (props) => {
                 disableUnderline
                 fullWidth
                 type="email"
+                onChange={(e)=> setEmail(e.target.value)}
               ></FilledInput>
               <FilledInput
                 className={classes.wrapper}
                 placeholder="Expected CTC"
                 disableUnderline
                 fullWidth
+                onChange={(e)=> setExpectedCTC(e.target.value)}
               ></FilledInput>
               <FilledInput
                 className={classes.wrapper}
@@ -57,6 +87,7 @@ const JobApplyModel = (props) => {
                 rows={2}
                 disableUnderline
                 fullWidth
+                onChange={(e)=> setExperience(e.target.value)}
               ></FilledInput>
               <FilledInput
                 className={classes.wrapper}
