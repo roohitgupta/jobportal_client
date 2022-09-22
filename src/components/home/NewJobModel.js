@@ -20,7 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-const NewJobModel = () => {
+const NewJobModel = (props) => {
 
   const [jobtitle, setJobtitle] = useState("");
   const [company, setCompany] = useState("");
@@ -50,7 +50,7 @@ const NewJobModel = () => {
   const classes = useStyles();
   return (
     <div>
-      <Dialog open={false} fullWidth>
+      <Dialog open={props.open} fullWidth>
         <DialogTitle>Post Job</DialogTitle>
         <DialogContent>
           <Grid container>
@@ -92,6 +92,7 @@ const NewJobModel = () => {
           <Button onClick={jobPost} variant="contained" disableElevation color="primary">
             Post Job
           </Button>
+          <Button onClick={()=>props.funClose()} variant="contained">Cancle</Button>
         </DialogActions>
       </Dialog>
       

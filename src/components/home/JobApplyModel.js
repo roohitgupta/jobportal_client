@@ -18,15 +18,16 @@ const useStyles = makeStyles({
     border: "1px solid black",
     marginTop: "6px",
   },
+  
 });
 
-const JobApplyModel = () => {
+const JobApplyModel = (props) => {
   const classes = useStyles();
   return ( 
     <div>
-      <Dialog open={false} fullWidth>
+      <Dialog open={props.open} fullWidth>
         <DialogTitle>Apply Job</DialogTitle>
-        <DialogContent>
+        <DialogContent  >
           <Grid container>
             <Grid item xs={12}>
               <FilledInput
@@ -69,8 +70,9 @@ const JobApplyModel = () => {
         </DialogContent>
         <DialogActions>
           <Button variant="contained" disableElevation color="primary">
-            Post Job
+            Apply
           </Button>
+          <Button onClick={()=>props.fun2close()} variant="outlined">Cancle</Button>
         </DialogActions>
       </Dialog>
     </div>
